@@ -1,0 +1,12 @@
+.box{
+    width: 20em;
+    height: 20em;
+    border-style: solid;
+}
+
+.row{
+    display: flex; 
+    width: 100%; 
+    text-align: center;
+    flex-direction: row;
+}
