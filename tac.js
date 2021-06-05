@@ -14,16 +14,19 @@ for(i = 0; i < 9; i++){
     let id = i + 1;
     boxes[`b${i + 1}`] = {
         element: document.getElementById(i + 1),
-        takenBy: null
+        takenBy: false
     };
 }
 
 // Individually handle click event on each box
-let box;
 for(i = 0; i < 9; i++){
-    let box = boxes[`b${i + 1}`];
+    let id = `b${i + 1}`;
+    let box = boxes[id];
     box.element.addEventListener("click", (e) =>{
-        box.element.innerHTML = `<img src="./assets/${currentPlayer}.jpg" width="100%" height="100%" />`
-        switchPlayer();
+        if(box.takenBy === false){
+            boxes[id].takenBy = currentPlayer;
+            box.element.innerHTML = `<img src="./assets/${currentPlayer}.jpg" width="100%" height="100%" />`
+            switchPlayer(); 
+        }
     });
 }
