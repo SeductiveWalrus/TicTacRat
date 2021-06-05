@@ -1,11 +1,14 @@
 // Globally keep track of current player 
 let currentPlayer = "null";
+document.getElementById("currentPlayer").innerHTML = `<img src="./assets/${currentPlayer}.jpg" width="100%" height="100%" />`;
 function switchPlayer(){
     if(currentPlayer === "null"){
-        return currentPlayer = "default";
+        currentPlayer = "default";
     }else if(currentPlayer === "default"){
-        return currentPlayer = "null";
+        currentPlayer = "null";
     }else throw new Error(`Unknown player type "${currentPlayer}"`);
+    document.getElementById("currentPlayer").innerHTML = `<img src="./assets/${currentPlayer}.jpg" width="100%" height="100%" />`;
+    return;
 }
 
 // Iterate over all 9 boxes and add them to object
@@ -24,7 +27,7 @@ for(i = 0; i < 9; i++){
     let box = boxes[id];
     box.element.addEventListener("click", (e) =>{
         if(box.takenBy === false){
-            boxes[id].takenBy = currentPlayer;
+            box.takenBy = currentPlayer;
             box.element.innerHTML = `<img src="./assets/${currentPlayer}.jpg" width="100%" height="100%" />`
             switchPlayer(); 
         }
